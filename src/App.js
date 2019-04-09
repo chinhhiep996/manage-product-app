@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+
+import TopMenu from './pages/TopMenu';
+import Products from './components/Products';
+import Cart from "./components/Cart";
+import EditProduct from './components/Edit';
+import NoMatch from './components/NoMatch';
+import Add from './components/Add';
+import { CartProvider } from './contexts/Cart';
+import  { ProductsProvider } from './contexts/Products';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <ProductsProvider>
+        <CartProvider>
+          <Router>
+            <TopMenu />
+
+            <Switch>
+              <Route path="/products" component={ Products } />
+              <Route path="/cart" component={ Cart } />
+              <Route path="/edit/:id" component={ EditProduct } />
+              <Route path="/add" component={ Add } />
+              <Redirect from="/home" to="/products" />
+              <Redirect from="/" to="/home" />
+              <Route component={ NoMatch } />
+            </Switch>
+          </Router>
+        </CartProvider>
+      </ProductsProvider>
     );
   }
 }
