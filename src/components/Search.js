@@ -82,7 +82,11 @@ class Search extends React.Component {
         <ProductsContext.Consumer>
             { ({handleSubmitSearch, handleChangeSoft, keySort}) =>
               <div className={classes.searchSort}>
-                <form onSubmit={this.handleSubmitSearch} className={classes.container} noValidate autoComplete="off">
+                <form onSubmit={this.handleSubmitSearch} 
+                  className={classes.container} 
+                  noValidate 
+                  autoComplete="off"
+                >
                   <TextField
                       id="outlined-search"
                       label="Tìm kiếm tên sản phẩm"
@@ -107,7 +111,7 @@ class Search extends React.Component {
                   <TextField
                     id="outlined-select-currency"
                     select
-                    label="Sắp xếp"
+                    label="Sắp xếp theo giá"
                     className={classes.textField}
                     value={keySort}
                     name="sort"

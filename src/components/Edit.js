@@ -79,7 +79,7 @@ class Edit extends Component {
             <Container>
                 <h1><Badge color="secondary">CHỈNH SỬA SẢN PHẨM</Badge></h1>
                 <Col lg={6}>
-                    <Form onSubmit={this.handleSubmit} className="container">
+                    <Form onSubmit={ this.handleSubmit } className="container">
                         <FormGroup>
                             <Label for="name">Tên sản phẩm</Label>
                             <Input 
@@ -87,8 +87,9 @@ class Edit extends Component {
                                 name="nameEdit"
                                 id="name" 
                                 placeholder="Nhập tên của sản phẩm"
-                                value={nameEdit}
-                                onChange={this.handleChange}
+                                value={ nameEdit }
+                                onChange={ this.handleChange }
+                                required
                              />
                         </FormGroup>
                         <FormGroup>
@@ -98,11 +99,12 @@ class Edit extends Component {
                                 name="priceEdit" 
                                 id="price" 
                                 placeholder="Nhập giá của sản phẩm"
-                                value={priceEdit}
-                                onChange={this.handleChange}
+                                value={ priceEdit }
+                                onChange={ this.handleChange }
+                                required
                             />
                         </FormGroup>
-                        <Button onClick={this.handleClick} 
+                        <Button onClick={ this.handleClick } 
                             type="submit"
                             color="danger"
                         >

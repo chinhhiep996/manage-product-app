@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Table, Container, Button } from 'reactstrap';
 
 import {CartContext} from '../contexts/Cart';
-import exportToJsonFile from '../js/ExportJson';
 
 export default class Example extends Component {
     render() {
@@ -34,8 +33,9 @@ export default class Example extends Component {
                 </Table>
                 <CartContext.Consumer>
                     {
-                        (cartItems) => 
-                            <Button onClick={() => exportToJsonFile(cartItems)} 
+                        ({exportToJsonFile}) => 
+                            <Button 
+                                onClick={exportToJsonFile}
                                 color="primary" 
                                 size="lg" 
                                 block

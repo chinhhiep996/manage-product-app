@@ -67,6 +67,7 @@ class Add extends Component {
                                 placeholder="Nhập tên của sản phẩm"
                                 value={ name }
                                 onChange={ this.handleChange }
+                                required
                              />
                         </FormGroup>
                         <FormGroup>
@@ -78,6 +79,7 @@ class Add extends Component {
                                 placeholder="Nhập giá của sản phẩm"
                                 value={ price }
                                 onChange={ this.handleChange }
+                                required
                             />
                         </FormGroup>
                         <Button onClick={ this.handleClick } type="submit" color="danger">

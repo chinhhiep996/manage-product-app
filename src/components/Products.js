@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'; 
-import {Container, Row, Pagination, PaginationItem, PaginationLink, Button, Col} from 'reactstrap';
+import { Container, Pagination, PaginationItem, PaginationLink, Button, Row } from 'reactstrap';
 import { withStyles } from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Search from './Search';
 import ProductItem from './ProductItem';
@@ -22,7 +22,7 @@ class Products extends Component {
       this.state = {
         products: [],
         currentPage: 1,
-        productsPerPage: 5,
+        productsPerPage: 12,
       };
 
       this.handlePageChange = this.handlePageChange.bind(this);
@@ -89,40 +89,35 @@ class Products extends Component {
 
         return(
             <Container>
-                <h2>Tất cả sản phẩm</h2>
+              <Button 
+                className="btn btn-warning mb-4"
+                size="lg"
+                >
+                <Link to="/add">
+                  Thêm sản phẩm
+                </Link>
+              </Button>
 
-                <Search />
-                
-                <Row>
-                    <Col xs="8" sm="8">
-                      {
-                        currentProducts.map((product, index) =>
-                          <ProductItem key={index} product={product} /> )
-                      }
-                    </Col>
-                    <Col xs="4" sm="4">
-                      <Button 
-                        className="ml-4 btn btn-warning"
-                        size="lg"
-                        >
-                        <Link to="/add">
-                          Thêm sản phẩm
-                        </Link>
-                      </Button>
-                    </Col>
-                </Row>
+              <Search />
+              
+              <Row>
+                {
+                  currentProducts.map((product, index) =>
+                    <ProductItem key={index} product={product} /> )
+                }
+              </Row>
 
-                <Pagination size="lg" aria-label="Page navigation example">
-                  <PaginationItem onClick={this.handlePageFirst}>
-                    <PaginationLink previous href="#" />
-                  </PaginationItem>
+              <Pagination size="lg" aria-label="Page navigation example">
+                <PaginationItem onClick={this.handlePageFirst}>
+                  <PaginationLink previous href="#" />
+                </PaginationItem>
 
-                  { renderPageNumbers }
+                { renderPageNumbers }
 
-                  <PaginationItem onClick={this.handlePageLast}>
-                    <PaginationLink next href="#" />
-                  </PaginationItem>
-                </Pagination>
+                <PaginationItem onClick={this.handlePageLast}>
+                  <PaginationLink next href="#" />
+                </PaginationItem>
+              </Pagination>
             </Container>
         );
     }
